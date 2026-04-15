@@ -1,11 +1,33 @@
 import { useState } from 'react'
+import type { ChangeEvent } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+// import Homepage from './pages/index'
+
+const initialForm = {
+  nama: '',
+  email: '',
+  telepon: '',
+  kota: '',
+  pesan: '',
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [form, setForm] = useState(initialForm)
+  // return(
+  //   <Homepage />
+  // )
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target
+    setForm((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
 
   return (
     <>
@@ -16,17 +38,84 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
+          <h1>Form Input Live Preview</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Isi 5 field di bawah ini, lalu hasilnya langsung tampil otomatis.
           </p>
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        <div className="form-preview">
+          <form className="live-form">
+            <label>
+              Nama
+              <input
+                type="text"
+                name="nama"
+                value={form.nama}
+                onChange={handleChange}
+                placeholder="Masukkan nama"
+              />
+            </label>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Masukkan email"
+              />
+            </label>
+            <label>
+              No. Telepon
+              <input
+                type="tel"
+                name="telepon"
+                value={form.telepon}
+                onChange={handleChange}
+                placeholder="Masukkan no. telepon"
+              />
+            </label>
+            <label>
+              Kota
+              <input
+                type="text"
+                name="kota"
+                value={form.kota}
+                onChange={handleChange}
+                placeholder="Masukkan kota"
+              />
+            </label>
+            <label>
+              Pesan
+              <textarea
+                name="pesan"
+                value={form.pesan}
+                onChange={handleChange}
+                placeholder="Tulis pesan singkat"
+                rows={4}
+              />
+            </label>
+          </form>
+
+          <section className="preview-card" aria-live="polite">
+            <h2>Hasil Input</h2>
+            <p>
+              <strong>Nama:</strong> {form.nama || '-'}
+            </p>
+            <p>
+              <strong>Email:</strong> {form.email || '-'}
+            </p>
+            <p>
+              <strong>No. Telepon:</strong> {form.telepon || '-'}
+            </p>
+            <p>
+              <strong>Kota:</strong> {form.kota || '-'}
+            </p>
+            <p>
+              <strong>Pesan:</strong> {form.pesan || '-'}
+            </p>
+          </section>
+        </div>
       </section>
 
       <div className="ticks"></div>

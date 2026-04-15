@@ -1,0 +1,52 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="40%" stop-color="#0f172a"/>
+      <stop offset="70%" stop-color="#1e3a8a"/>
+      <stop offset="90%" stop-color="#166534"/>
+      <stop offset="100%" stop-color="#ecfdf5"/>
+    </linearGradient>
+
+    <!-- Ribbon Gradient -->
+    <linearGradient id="ribbonGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+
+    <!-- Glow -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bgGradient)" />
+
+  <!-- Single Ribbon -->
+  <path d="
+    M120,1500
+    C300,1200 700,1600 900,1100
+    S1100,500 600,300
+    S200,600 400,900
+    S800,1300 500,1600
+  "
+  fill="none"
+  stroke="url(#ribbonGradient)"
+  stroke-width="50"
+  stroke-linecap="round"
+  filter="url(#glow)" />
+
+  
+  <!-- Light Accents -->
+  <circle cx="200" cy="400" r="90" fill="#ffffff" opacity="0.05"/>
+  <circle cx="900" cy="700" r="130" fill="#22c55e" opacity="0.08"/>
+  <circle cx="300" cy="1300" r="70" fill="#ffffff" opacity="0.04"/>
+
+</svg>
